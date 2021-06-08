@@ -47,10 +47,20 @@ proc signal*(s: var Semaphore) =
 proc wait*(s: var Semaphore) =
   ## blocking wait on `s`
   assert s.id != 0
-  withLock s.lock:
-    while s.count <= 0:
-      wait(s.cond, s.lock)
-    dec s.count
+  template consume(s: Semaphore) =
+    try:
+      if s.count > 0:
+        dec s.count
+        break
+    finally:
+      release s.lock
+
+  while true:
+    acquire s.lock
+    consume s
+    # race
+    wait(s.cond, s.lock)
+    consume s
 
 proc isReady*(s: var Semaphore): bool =
   ## `true` if `s` is ready
