@@ -1,0 +1,11 @@
+Semaphore	semaphores.html#Semaphore	semaphores: Semaphore	
+id	semaphores.html#id,Semaphore	semaphores: id(s: Semaphore): int	
+hash	semaphores.html#hash,Semaphore	semaphores: hash(s: Semaphore): Hash	
+`==`	semaphores.html#==,Semaphore,Semaphore	semaphores: `==`(a, b: Semaphore): bool	
+`&lt;`	semaphores.html#<,Semaphore,Semaphore	semaphores: `&lt;`(a, b: Semaphore): bool	
+init	semaphores.html#init,Semaphore,int	semaphores: init(s: var Semaphore; id: int)	
+`=destroy`	semaphores.html#=destroy,Semaphore	semaphores: `=destroy`(s: var Semaphore)	
+signal	semaphores.html#signal,Semaphore	semaphores: signal(s: var Semaphore)	
+wait	semaphores.html#wait,Semaphore	semaphores: wait(s: var Semaphore)	
+isReady	semaphores.html#isReady,Semaphore	semaphores: isReady(s: var Semaphore): bool	
+withReady	semaphores.html#withReady.t,Semaphore,untyped	semaphores: withReady(s: var Semaphore; body: untyped): untyped	
