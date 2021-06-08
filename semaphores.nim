@@ -42,7 +42,7 @@ proc signal*(s: var Semaphore) =
   assert s.id != 0
   withLock s.lock:
     inc s.count
-  signal s.cond
+    signal s.cond
 
 proc wait*(s: var Semaphore) =
   ## blocking wait on `s`
