@@ -5,8 +5,19 @@ type
   Semaphore* = object
     id: int
     lock: Lock
-    cond: Cond
     count: int
+    cond: Cond
+
+when (NimMajor, NimMinor) == (1, 0):
+  proc `=sink`(a: var Semaphore; b: Semaphore) =
+    {.warning: "nim-1.0 bug; see https://github.com/nim-lang/Nim/issues/14873".}
+    if a.id != 0:
+      deinitLock a.lock
+      deinitCond a.cond
+    a.id = b.id
+    a.count = b.count
+    initLock a.lock
+    initCond a.cond
 
 proc id*(s: Semaphore): int = s.id
 
