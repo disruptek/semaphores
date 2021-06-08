@@ -49,9 +49,8 @@ jobs:
         shell: bash
         run: |
           cd ci
-          #nimble --accept develop
-          #nimble --accept build
-          nimble --accept install
+          nimble --accept develop
+          nimble --accept install "https://github.com/disruptek/balls"
           nimble test
 
       - name: Build docs
