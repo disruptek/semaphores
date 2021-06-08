@@ -67,3 +67,5 @@ template withReady*(s: var Semaphore; body: untyped): untyped =
         body
       finally:
         dec s.count
+    else:
+      raise Defect.newException: "semaphore " & $s.id & " unready"
